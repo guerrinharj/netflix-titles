@@ -1,2 +1,29 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="col-6 m-auto py-5 text-center">
+
+  <h2> Bem-vinde a Netflix Titles API. O que você deseja coletar? </h2>
+  <ul>
+    <li> <%= link_to 'Ver todos os endpoints da API', api_v1_titles_path %> </li>
+    <li>
+    <p>Filtrar por ano:</p>
+        <%= form_tag api_v1_titles_path, method: :get do %>
+        <%= text_field_tag :release_year,
+          params[:release_year],
+          class: "col-3 p-2",
+          placeholder: "ex: 2020"
+        %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
+    </li>
+        <li>
+    <p>Filtrar por ano:</p>
+        <%= form_tag api_v1_titles_path, method: :get do %>
+        <%= text_field_tag :release_year,
+          params[:release_year],
+          class: "col-3 p-2",
+          placeholder: "ex: 2020"
+        %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
+    </li>
+  </ul>
+</div>
