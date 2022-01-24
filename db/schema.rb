@@ -10,9 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2022_01_24_195253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "titles", force: :cascade do |t|
+    t.integer "show_id"
+    t.string "type"
+    t.string "name"
+    t.string "director", default: [], array: true
+    t.string "cast", default: [], array: true
+    t.string "country", default: [], array: true
+    t.date "date_added"
+    t.integer "release_year"
+    t.string "duration"
+    t.string "listed_in", default: [], array: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
 end
