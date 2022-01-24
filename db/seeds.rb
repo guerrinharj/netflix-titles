@@ -15,15 +15,17 @@ Title.destroy_all
 CSV.foreach(filepath, headers: :first_row) do |row|
   title = Title.new
   title.show_id = row['show_id']
-  title.type = row['type']
+  title.type_title = row['type']
   title.name = row['title']
-  title.director = row['director'].split(/\s*,\s*/)
-  title.cast = row['cast'].split(/\s*,\s*/)
-  title.country = row['country'].split(/\s*,\s*/)
+  title.director = row['director'].blank? ? '' : row['director'].split(/\s*,\s*/)
+  title.cast = row['cast'].blank? ? '' : row['cast'].split(/\s*,\s*/)
+  title.country = row['country'].blank? ? '' : row['country'].split(/\s*,\s*/)
   title.date_added = Date.parse(row['date_added'])
   title.release_year = row['release_year']
   title.rating = row['rating']
   title.duration = row['duration']
-  title.listed_in = row['rating'].split(/\s*,\s*/)
+  title.listed_in = row['listed_in'].split(/\s*,\s*/)
   title.description = row['description']
+  title.save!
+  puts "#{title} is saved!"
 end

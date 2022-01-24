@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2022_01_24_195253) do
   enable_extension "plpgsql"
 
   create_table "titles", force: :cascade do |t|
-    t.integer "show_id"
-    t.string "type"
+    t.string "show_id"
+    t.string "type_title"
     t.string "name"
     t.string "director", default: [], array: true
     t.string "cast", default: [], array: true
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2022_01_24_195253) do
     t.date "date_added"
     t.integer "release_year"
     t.string "duration"
+    t.string "rating"
+    t.string "description"
     t.string "listed_in", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
