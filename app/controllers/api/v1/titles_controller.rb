@@ -5,7 +5,7 @@ class Api::V1::TitlesController < Api::V1::BaseController
     elsif params[:listed_in].present?
       @titles = Title.where(listed_in: params[:listed_in])
     elsif params[:country].present?
-      @titles = Title.where(listed_in: params[:listed_in])
+      @titles = Title.where(listed_in: params[:country])
     else
       @titles = Title.all
     end
