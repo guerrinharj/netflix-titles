@@ -5,3 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'csv'
+require 'date'
+
+filepath = "db/netflix_titles.csv"
+
+Title.destroy_all
+
+CSV.foreach(filepath, headers: :first_row) do |row|
+  title = Title.new
+  title.show_id = row['show_id']
+  title.type = row['type']
+  title.name = row['title']
+  title.director = row['director'].split(/\s*,\s*/)
+  title.cast = row['cast'].split(/\s*,\s*/)
+  title.country = row['country'].split(/\s*,\s*/)
+  title.date_added = Date.parse(row['date_added'])
+  title.release_year = row['release_year']
+  title.rating = row['rating']
+  title.duration = row['duration']
+  title.listed_in = row['rating'].split(/\s*,\s*/)
+  title.description = row['description']
+end
