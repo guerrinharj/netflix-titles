@@ -14,7 +14,9 @@
       <%= submit_tag "Search", class: "btn btn-primary" %>
       <% end %>
     </li>
-        <li>
+
+
+    <li>
     <p>Filtrar por genero:</p>
         <%= form_tag api_v1_titles_path, method: :get do %>
         <%= text_field_tag :listed_in,
@@ -25,5 +27,19 @@
       <%= submit_tag "Search", class: "btn btn-primary" %>
       <% end %>
     </li>
+
+    <li>
+    <p>Filtrar por pais:</p>
+        <%= form_tag api_v1_titles_path, method: :get do %>
+        <%= text_field_tag :country,
+          params[:country],
+          class: "col-3 p-2",
+          placeholder: "ex: Brazil"
+        %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
+    </li>
+
+
   </ul>
 </div>
