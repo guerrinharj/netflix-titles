@@ -7,7 +7,7 @@
     <p>Filter by year:</p>
         <%= form_tag api_v1_titles_path, method: :get do %>
         <% year_array = Title.pluck(:release_year).uniq.sort %>
-        <%= select_tag(:release_year, options_for_select(year_array), prompt: "Select a year") %>
+        <%= select_tag(:release_year, options_for_select(year_array), prompt: "Select a year", class: "p-3 col-6") %>
         <%= submit_tag "Search", class: "btn btn-primary" %>
         <% end %>
     </li>
@@ -17,7 +17,7 @@
     <p>Filter by genre:</p>
         <%= form_tag api_v1_titles_path, method: :get do %>
         <% genres_array = Title.pluck(:listed_in).flatten.uniq.sort %>
-        <%= select_tag(:listed_in, options_for_select(genres_array),  prompt: "Select a genre") %>
+        <%= select_tag(:listed_in, options_for_select(genres_array),  prompt: "Select a genre", class: "p-3 col-6") %>
         <%= submit_tag "Search", class: "btn btn-primary" %>
       <% end %>
     </li>
@@ -26,7 +26,7 @@
     <p>Filter by country:</p>
         <%= form_tag api_v1_titles_path, method: :get do %>
         <% countries_array = Title.pluck(:country).flatten.uniq.sort %>
-        <%= select_tag(:country, options_for_select(countries_array), prompt: "Select a country") %>
+        <%= select_tag(:country, options_for_select(countries_array), prompt: "Select a country", class: "p-3 col-6") %>
         <%= submit_tag "Search", class: "btn btn-primary" %>
         <% end %>
     </li>
