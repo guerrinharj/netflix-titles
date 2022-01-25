@@ -1,45 +1,34 @@
 <div class="col-6 m-auto py-5 text-center">
 
-  <h2> Bem-vinde a Netflix Titles API. O que você deseja coletar? </h2>
+  <h2> Welcome to the Netflix Titles API </h2>
   <ul>
-    <li> <%= link_to 'Ver todos os endpoints da API', api_v1_titles_path %> </li>
+    <li> <%= link_to 'API endpoints', api_v1_titles_path %> </li>
     <li>
-    <p>Filtrar por ano:</p>
+    <p>Filter by year:</p>
         <%= form_tag api_v1_titles_path, method: :get do %>
-        <%= text_field_tag :release_year,
-          params[:release_year],
-          class: "col-3 p-2",
-          placeholder: "ex: 2020"
-        %>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-      <% end %>
+        <% year_array = Title.pluck(:release_year).uniq.sort %>
+        <%= select_tag(:release_year, options_for_select(year_array), prompt: "Select a year") %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
     </li>
 
 
     <li>
-    <p>Filtrar por genero:</p>
+    <p>Filter by genre:</p>
         <%= form_tag api_v1_titles_path, method: :get do %>
-        <%= text_field_tag :listed_in,
-          params[:listed_in],
-          class: "col-3 p-2",
-          placeholder: "ex: Comedy"
-        %>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% genres_array = Title.pluck(:listed_in).flatten.uniq.sort %>
+        <%= select_tag(:listed_in, options_for_select(genres_array),  prompt: "Select a genre") %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
       <% end %>
     </li>
 
     <li>
-    <p>Filtrar por pais:</p>
+    <p>Filter by country:</p>
         <%= form_tag api_v1_titles_path, method: :get do %>
-        <%= text_field_tag :country,
-          params[:country],
-          class: "col-3 p-2",
-          placeholder: "ex: Brazil"
-        %>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-      <% end %>
+        <% countries_array = Title.pluck(:country).flatten.uniq.sort %>
+        <%= select_tag(:country, options_for_select(countries_array), prompt: "Select a country") %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
     </li>
-
-
   </ul>
 </div>
