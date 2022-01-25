@@ -3,5 +3,5 @@ if @titles.count.positive?
     json.extract! title, :show_id, :name, :type_title, :director, :cast, :country, :date_added, :release_year, :rating, :duration, :listed_in, :description
   end
 else
-  json.not_found "No results founds for #{@param}"
+  json.not_found "No results founds"
 end
